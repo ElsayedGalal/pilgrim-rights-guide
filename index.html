@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ميثاق حقوق ضيف الرحمن - إثراء الجود</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background: linear-gradient(135deg, #00334D 0%, #005D92 50%, #00AABF 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .brand-text { color: #C29979; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); }
+    </style>
+</head>
+<body class="py-10 px-4">
+
+    <div class="text-center mb-12 animate__animated animate__fadeInDown">
+        <h1 class="brand-text text-5xl md:text-6xl font-black mb-4">إثراء الجود</h1>
+        <div class="space-y-2 text-white opacity-90">
+            <h2 class="text-2xl font-bold">ميثاق حقوق ضيف الرحمن</h2>
+            <p class="text-sm font-light uppercase tracking-widest">Pilgrim's Bill of Rights</p>
+            <p class="text-sm font-light">Хартия прав паломника | Charte des droits du pèlerin</p>
+        </div>
+        <div class="h-1 w-32 bg-[#C29979] mx-auto mt-4 rounded-full"></div>
+    </div>
+
+    <div id="lang-selection" class="grid grid-cols-2 md:grid-cols-4 gap-6 w-full max-w-4xl animate__animated animate__fadeInUp">
+        <button onclick="selectLanguage('ar')" class="glass-card p-6 rounded-3xl hover:scale-105 transition-all shadow-xl flex flex-col items-center">
+            <img src="https://flagcdn.com/w160/sa.png" class="w-16 h-10 object-cover rounded-md mb-3 shadow-sm">
+            <span class="font-black text-[#00334D] text-lg">العربية</span>
+        </button>
+
+        <button onclick="selectLanguage('en')" class="glass-card p-6 rounded-3xl hover:scale-105 transition-all shadow-xl flex flex-col items-center">
+            <img src="https://flagcdn.com/w160/us.png" class="w-16 h-10 object-cover rounded-md mb-3 shadow-sm">
+            <span class="font-black text-[#00334D] text-lg">English</span>
+        </button>
+
+        <button onclick="selectLanguage('ru')" class="glass-card p-6 rounded-3xl hover:scale-105 transition-all shadow-xl flex flex-col items-center">
+            <img src="https://flagcdn.com/w160/ru.png" class="w-16 h-10 object-cover rounded-md mb-3 shadow-sm">
+            <span class="font-black text-[#00334D] text-lg">Русский</span>
+        </button>
+
+        <button onclick="selectLanguage('fr')" class="glass-card p-6 rounded-3xl hover:scale-105 transition-all shadow-xl flex flex-col items-center">
+            <img src="https://flagcdn.com/w160/fr.png" class="w-16 h-10 object-cover rounded-md mb-3 shadow-sm">
+            <span class="font-black text-[#00334D] text-lg">Français</span>
+        </button>
+    </div>
+
+    <div id="player-view" style="display: none;" class="text-center animate__animated animate__fadeIn w-full max-w-md">
+        <div class="mb-8 mx-auto w-64 h-64 bg-white/10 rounded-full border-4 border-[#C29979] shadow-2xl relative overflow-hidden flex items-center justify-center">
+            <lottie-player 
+                id="avatar-lottie"
+                src="data.json" 
+                background="transparent" 
+                speed="1" 
+                style="width: 100%; height: 100%;" 
+                loop>
+            </lottie-player>
+        </div>
+
+        <div class="glass-card p-10 rounded-[3rem] shadow-2xl">
+            <h3 id="current-lang-name" class="text-[#00334D] text-2xl font-black mb-6"></h3>
+            <button id="play-btn" class="w-24 h-24 bg-[#C29979] rounded-full flex items-center justify-center mx-auto shadow-2xl hover:bg-[#a88265] transition-all border-4 border-white active:scale-95">
+                <span id="btn-icon" class="text-white text-4xl">▶️</span>
+            </button>
+            <p id="status-text" class="mt-6 text-gray-400 font-bold uppercase text-xs tracking-widest">اضغط للتشغيل | Play</p>
+        </div>
+
+        <button onclick="window.location.reload()" class="mt-10 text-white/80 underline font-bold">تغيير اللغة | Change Language</button>
+    </div>
+
+    <script>
+        const audioConfig = {
+            ar: { title: "اللغة العربية", audio: "arabic.wav" },
+            en: { title: "English Language", audio: "english.wav" },
+            ru: { title: "Русский язык", audio: "russian.wav" },
+            fr: { title: "Langue Française", audio: "french.wav" }
+        };
+
+        let activeAudio = null;
+        let isPlaying = false;
+
+        function selectLanguage(id) {
+            // الانتقال الفوري للواجهة
+            document.getElementById('lang-selection').style.display = 'none';
+            document.getElementById('player-view').style.display = 'block';
+            
+            const data = audioConfig[id];
+            document.getElementById('current-lang-name').innerText = data.title;
+            
+            const lottie = document.getElementById('avatar-lottie');
+            const btn = document.getElementById('play-btn');
+            const icon = document.getElementById('btn-icon');
+            const status = document.getElementById('status-text');
+
+            // تحميل الصوت
+            if (activeAudio) { activeAudio.pause(); }
+            activeAudio = new Audio(data.audio);
+            activeAudio.load();
+
+            btn.onclick = function() {
+                if (isPlaying) {
+                    activeAudio.pause();
+                    lottie.pause();
+                    icon.innerText = "▶️";
+                    status.innerText = "Paused";
+                } else {
+                    activeAudio.play().then(() => {
+                        lottie.play();
+                        icon.innerText = "⏸️";
+                        status.innerText = "Speaking...";
+                    }).catch(e => {
+                        console.error(e);
+                        alert("تأكد من رفع ملفات الصوت (wav) على GitHub.");
+                    });
+                }
+                isPlaying = !isPlaying;
+            };
+
+            activeAudio.onended = () => {
+                lottie.pause();
+                icon.innerText = "▶️";
+                isPlaying = false;
+                status.innerText = "Finished";
+            };
+        }
+    </script>
+</body>
+</html>
