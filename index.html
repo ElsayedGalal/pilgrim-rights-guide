@@ -62,7 +62,7 @@
             </button>
             <a id="visual-guide-btn" href="#" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 15px; background: #00334D; color: #C29979; border: 2px solid #C29979; border-radius: 1.5rem; font-weight: bold; text-decoration: none; transition: all 0.3s ease; margin-top: 20px;">
                 <span>📖</span>
-                <span id="guide-btn-text">عرض الدليل المصور</span>
+                <span id="guide-btn-text">للمزيد من المعلومات يرجى الإطلاع على دليل حقوق الضيف</span>
             </a>
             <p id="status-text" class="mt-6 text-gray-400 font-bold uppercase text-xs tracking-widest">انتظر التحميل... | Loading...</p>
         </div>
@@ -87,7 +87,7 @@
             const data = audioConfig[id];
             document.getElementById('current-lang-name').innerText = data.title;
             // تحديث رابط ونص الدليل حسب اللغة المختارة
-            const guideTexts = { ar: "عرض الدليل المصور", en: "View Visual Guide", ru: "Визуальное руководство", fr: "Voir le guide visuel" };
+            const guideTexts = { ar: "للمزيد من المعلومات يرجى الإطلاع على دليل حقوق الضيف", en: "For more information, please refer to the Guest Rights Guide.", ru: "Для получения более подробной информации, пожалуйста, ознакомьтесь с Руководством по правам гостей.", fr: "Pour plus d'informations, veuillez consulter le Guide des droits des invités." };
             document.getElementById('visual-guide-btn').href = `./${id}/index.html`; 
             document.getElementById('guide-btn-text').innerText = guideTexts[id] || guideTexts['ar'];
             const lottie = document.getElementById('avatar-lottie');
