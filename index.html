@@ -60,6 +60,10 @@
             <button id="play-btn" class="w-24 h-24 bg-[#C29979] rounded-full flex items-center justify-center mx-auto shadow-2xl hover:bg-[#a88265] transition-all border-4 border-white">
                 <span id="btn-icon" class="text-white text-4xl">▶️</span>
             </button>
+            <a id="visual-guide-btn" href="#" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 15px; background: #00334D; color: #C29979; border: 2px solid #C29979; border-radius: 1.5rem; font-weight: bold; text-decoration: none; transition: all 0.3s ease; margin-top: 20px;">
+                <span>📖</span>
+                <span id="guide-btn-text">عرض الدليل المصور</span>
+            </a>
             <p id="status-text" class="mt-6 text-gray-400 font-bold uppercase text-xs tracking-widest">انتظر التحميل... | Loading...</p>
         </div>
         <button onclick="window.location.reload()" class="mt-10 text-white/80 underline font-bold">تغيير اللغة | Back</button>
@@ -82,6 +86,10 @@
             
             const data = audioConfig[id];
             document.getElementById('current-lang-name').innerText = data.title;
+            // تحديث رابط ونص الدليل حسب اللغة المختارة
+            const guideTexts = { ar: "عرض الدليل المصور", en: "View Visual Guide", ru: "Визуальное руководство", fr: "Voir le guide visuel" };
+            document.getElementById('visual-guide-btn').href = `./${id}/index.html`; 
+            document.getElementById('guide-btn-text').innerText = guideTexts[id] || guideTexts['ar'];
             const lottie = document.getElementById('avatar-lottie');
             const btn = document.getElementById('play-btn');
             const icon = document.getElementById('btn-icon');
