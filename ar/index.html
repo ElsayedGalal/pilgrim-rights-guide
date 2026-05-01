@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل حقوق ضيف الرحمن - إثراء الجود</title>
+    <style>
+        /* إعدادات الخلفية الموحدة للموقع */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #FDFBF7; /* لون سكري ملكي مريح للعين */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* زخرفة خفيفة جداً في خلفية الموقع */
+            background-image: radial-gradient(#C29979 0.5px, transparent 0.5px);
+            background-size: 40px 40px;
+            background-attachment: fixed;
+        }
+
+        /* حاوية الصور لضمان العرض المثالي */
+        .scroll-container {
+            max-width: 1000px; /* عرض مناسب جداً لصور الـ Landscape والـ Portrait */
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0px; /* صور متصلة تماماً لخلق تجربة الـ PDF */
+            padding: 20px 0;
+        }
+
+        /* تنسيق الصورة الواحدة */
+        .guide-page {
+            width: 100%;
+            height: auto;
+            display: block;
+            /* إضافة ظل خفيف جداً لإعطاء عمق بسيط */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        /* تحسين الوضوح ومنع السحب */
+        img {
+            image-rendering: -webkit-optimize-contrast;
+            -webkit-user-drag: none;
+            user-select: none;
+        }
+
+        /* استجابة الشاشات الصغيرة (الجوال) */
+        @media (max-width: 768px) {
+            .scroll-container {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scroll-container">
+        <img src="1.jpg" loading="lazy" alt="صفحة 1" class="guide-page">
+        <img src="2.jpg" loading="lazy" alt="صفحة 2" class="guide-page">
+        <img src="3.jpg" loading="lazy" alt="صفحة 3" class="guide-page">
+        <img src="4.jpg" loading="lazy" alt="صفحة 4" class="guide-page">
+        <img src="5.jpg" loading="lazy" alt="صفحة 5" class="guide-page">
+        <img src="6.jpg" loading="lazy" alt="صفحة 6" class="guide-page">
+        <img src="7.jpg" loading="lazy" alt="صفحة 7" class="guide-page">
+        <img src="8.jpg" loading="lazy" alt="صفحة 8" class="guide-page">
+        <img src="9.jpg" loading="lazy" alt="صفحة 9" class="guide-page">
+        <img src="10.jpg" loading="lazy" alt="صفحة 10" class="guide-page">
+        <img src="11.jpg" loading="lazy" alt="صفحة 11" class="guide-page">
+        <img src="12.jpg" loading="lazy" alt="صفحة 12" class="guide-page">
+        <img src="13.jpg" loading="lazy" alt="صفحة 13" class="guide-page">
+        <img src="14.jpg" loading="lazy" alt="صفحة 14" class="guide-page">
+        <img src="15.jpg" loading="lazy" alt="صفحة 15" class="guide-page">
+        <img src="16.jpg" loading="lazy" alt="صفحة 16" class="guide-page">
+        <img src="17.jpg" loading="lazy" alt="صفحة 17" class="guide-page">
+        <img src="18.jpg" loading="lazy" alt="صفحة 18" class="guide-page">
+    </div>
+
+</body>
+</html>
